@@ -101,6 +101,7 @@ public class NoticiaController {
 			return new ResponseEntity<Noticia>(noticia, HttpStatus.OK);
 
 		} catch (DataAccessException | InternalError e) {
+			System.out.print(e);
 			map.put("error", e.getCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
 		}
@@ -117,6 +118,7 @@ public class NoticiaController {
 			}
 			return new ResponseEntity<Noticia>(noticia, HttpStatus.OK);
 		} catch (DataAccessException | InternalError e) {
+			System.out.print(e);
 			map.put("error", e.getCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
 		}
