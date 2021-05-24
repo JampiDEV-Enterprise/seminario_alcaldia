@@ -29,11 +29,11 @@ public class Usuario implements Serializable {
 	
 	private String rol;
 
-	//bi-directional many-to-one association to Noticia
+	
 	@OneToMany(mappedBy="usuarioBean")
 	private List<Noticia> noticias;
 
-	//bi-directional many-to-one association to Alcaldia
+	
 	@ManyToOne
 	@JoinColumn(name="id_alcaldia")
 	@JsonIgnore
