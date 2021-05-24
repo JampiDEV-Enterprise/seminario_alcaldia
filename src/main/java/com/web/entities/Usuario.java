@@ -25,6 +25,8 @@ public class Usuario implements Serializable {
 
 	private String password;
 
+	private String nombre;
+	
 	private String rol;
 
 	//bi-directional many-to-one association to Noticia
@@ -39,6 +41,16 @@ public class Usuario implements Serializable {
 
 	public Usuario() {
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
 
 	public String getEmail() {
 		return this.email;

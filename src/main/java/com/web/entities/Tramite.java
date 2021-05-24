@@ -2,6 +2,9 @@ package com.web.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -31,6 +34,7 @@ public class Tramite implements Serializable {
 	//bi-directional many-to-one association to Alcaldia
 	@ManyToOne
 	@JoinColumn(name="alcaldia_id")
+	@JsonIgnore
 	private Alcaldia alcaldia;
 
 	public Tramite() {

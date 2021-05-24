@@ -3,6 +3,8 @@ package com.web.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the paso database table.
@@ -28,6 +30,7 @@ public class Paso implements Serializable {
 	//bi-directional many-to-one association to Tramite
 	@ManyToOne
 	@JoinColumn(name="id_tramite")
+	@JsonIgnore
 	private Tramite tramite;
 
 	public Paso() {
