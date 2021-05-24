@@ -2,6 +2,9 @@ package com.web.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -36,26 +39,27 @@ public class Alcaldia implements Serializable {
 	private String telefono;
 
 	//bi-directional many-to-one association to EnlaceIntere
+	@JsonIgnore
 	@OneToMany(mappedBy="alcaldia")
 	private List<EnlaceIntere> enlaceInteres;
 
-	//bi-directional many-to-one association to Galeria
-	@OneToMany(mappedBy="alcaldia")
-	private List<Galeria> galerias;
-
 	//bi-directional many-to-one association to Noticia
+	@JsonIgnore
 	@OneToMany(mappedBy="alcaldia")
 	private List<Noticia> noticias;
 
 	//bi-directional many-to-one association to PreguntaFrecuente
+	@JsonIgnore
 	@OneToMany(mappedBy="alcaldia")
 	private List<PreguntaFrecuente> preguntaFrecuentes;
 
 	//bi-directional many-to-one association to Tramite
+	@JsonIgnore
 	@OneToMany(mappedBy="alcaldia")
 	private List<Tramite> tramites;
 
 	//bi-directional many-to-one association to Usuario
+	@JsonIgnore
 	@OneToMany(mappedBy="alcaldia")
 	private List<Usuario> usuarios;
 
@@ -146,28 +150,6 @@ public class Alcaldia implements Serializable {
 		enlaceIntere.setAlcaldia(null);
 
 		return enlaceIntere;
-	}
-
-	public List<Galeria> getGalerias() {
-		return this.galerias;
-	}
-
-	public void setGalerias(List<Galeria> galerias) {
-		this.galerias = galerias;
-	}
-
-	public Galeria addGaleria(Galeria galeria) {
-		getGalerias().add(galeria);
-		galeria.setAlcaldia(this);
-
-		return galeria;
-	}
-
-	public Galeria removeGaleria(Galeria galeria) {
-		getGalerias().remove(galeria);
-		galeria.setAlcaldia(null);
-
-		return galeria;
 	}
 
 	public List<Noticia> getNoticias() {

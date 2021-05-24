@@ -2,7 +2,11 @@ package com.web.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -29,19 +33,26 @@ public class Noticia implements Serializable {
 	private String titulo;
 
 	//bi-directional many-to-one association to Alcaldia
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_alcaldia")
 	private Alcaldia alcaldia;
 
 	//bi-directional many-to-one association to SubCategoria
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="sub_categoria_id")
 	private SubCategoria subCategoria;
+	
+	//bi-directional many-to-one association to Foto
+	@OneToMany(mappedBy="noticia")
+	private List<Foto> fotos;
 
 	//bi-directional many-to-one association to Usuario
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="usuario")
-	private Usuario usuarioBean;
+	private Usuario usuario;
 
 	public Noticia() {
 	}
@@ -94,12 +105,20 @@ public class Noticia implements Serializable {
 		this.subCategoria = subCategoria;
 	}
 
-	public Usuario getUsuarioBean() {
-		return this.usuarioBean;
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
-	public void setUsuarioBean(Usuario usuarioBean) {
-		this.usuarioBean = usuarioBean;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Foto> getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(List<Foto> fotos) {
+		this.fotos = fotos;
 	}
 
 }

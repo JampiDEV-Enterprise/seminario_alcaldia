@@ -50,9 +50,6 @@ public class TramiteController {
 			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		}
-		
-		
-
 	}
 
 	@GetMapping("/listar")

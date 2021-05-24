@@ -30,7 +30,8 @@ public class Usuario implements Serializable {
 	private String rol;
 
 	//bi-directional many-to-one association to Noticia
-	@OneToMany(mappedBy="usuarioBean")
+//	@JsonBackReference
+	@OneToMany(mappedBy="usuario")
 	private List<Noticia> noticias;
 
 	//bi-directional many-to-one association to Alcaldia
@@ -94,14 +95,14 @@ public class Usuario implements Serializable {
 
 	public Noticia addNoticia(Noticia noticia) {
 		getNoticias().add(noticia);
-		noticia.setUsuarioBean(this);
+		noticia.setUsuario(this);
 
 		return noticia;
 	}
 
 	public Noticia removeNoticia(Noticia noticia) {
 		getNoticias().remove(noticia);
-		noticia.setUsuarioBean(null);
+		noticia.setUsuario(null);
 
 		return noticia;
 	}

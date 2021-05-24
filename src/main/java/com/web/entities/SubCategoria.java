@@ -2,6 +2,9 @@ package com.web.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -27,6 +30,7 @@ public class SubCategoria implements Serializable {
 	private String titulo;
 
 	//bi-directional many-to-one association to Noticia
+	@JsonIgnore
 	@OneToMany(mappedBy="subCategoria")
 	private List<Noticia> noticias;
 

@@ -73,7 +73,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		response.addHeader(JWTServiceImpl.HEADER_STRING, JWTServiceImpl.TOKEN_PREFIX + token);
 		
 		Map<String, Object> body = new HashMap<String, Object>();
-		body.put("token", token);
+//		body.put("token", token);
 		body.put("user", (User) authResult.getPrincipal());
 		body.put("mensaje", "Has Iniciado sesion correctamente");
 		

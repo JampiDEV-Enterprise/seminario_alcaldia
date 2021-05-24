@@ -3,6 +3,8 @@ package com.web.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the foto database table.
@@ -21,12 +23,17 @@ public class Foto implements Serializable {
 
 	private String descripcion;
 
-	private String titulo;
-
-	//bi-directional many-to-one association to Galeria
+	//bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="galeria_id")
-	private Galeria galeria;
+	@JsonIgnore
+	@JoinColumn(name="usuario")
+	private Usuario usuario;
+	
+	//bi-directional many-to-one association to Noticia
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="id_noticia")
+	private Noticia noticia;
 
 	public Foto() {
 	}
@@ -47,20 +54,21 @@ public class Foto implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public String getTitulo() {
-		return this.titulo;
+
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public Galeria getGaleria() {
-		return this.galeria;
+	public Noticia getNoticia() {
+		return noticia;
 	}
 
-	public void setGaleria(Galeria galeria) {
-		this.galeria = galeria;
+	public void setNoticia(Noticia noticia) {
+		this.noticia = noticia;
 	}
 
 }
