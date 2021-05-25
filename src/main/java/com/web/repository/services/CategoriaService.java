@@ -9,10 +9,13 @@ import com.web.entities.Categoria;
 
 public interface CategoriaService {
 
-	public List<Categoria> listarCategorias();
+	public List<Categoria> findAll();
 
 	public Categoria save(Categoria entity);
-	public Categoria findByCodigo(int idcategoria);
+	
+	public Categoria findById(int idcategoria);
+	
+	public String remove(int id);
 
 	
 

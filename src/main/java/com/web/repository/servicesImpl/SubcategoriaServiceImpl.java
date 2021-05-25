@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.web.entities.Categoria;
 import com.web.entities.SubCategoria;
 import com.web.repository.dao.ISubcategoriaDao;
 import com.web.repository.services.SubcategoriaService;
@@ -39,7 +40,7 @@ public class SubcategoriaServiceImpl implements SubcategoriaService {
 
 
 	@Override
-	public List<SubCategoria> listarSubcategorias() {
+	public List<SubCategoria> findAll() {
 		try {
 			return (List<SubCategoria>) repository.findAll();
 		} catch (Exception e) {
@@ -60,7 +61,27 @@ public class SubcategoriaServiceImpl implements SubcategoriaService {
 		}
 		return null;
 	}
+	
+	@Override
+	public List<SubCategoria> findByCategoria(Categoria categoria) {
+		try {
+			return repository.findByCategoria(categoria);
+		} catch (Exception e) {
+			logger.error("Listar productos por categoria", e);
+		}
+		return new ArrayList<>();
+	}
 
+	@Override
+	public String remove(int id) {
+		try {
+			repository.deleteById(id);
+			return "SubCategoria eliminada";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
 
 
 

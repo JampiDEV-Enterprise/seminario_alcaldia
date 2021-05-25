@@ -39,7 +39,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
 
 	@Override
-	public List<Categoria> listarCategorias() {
+	public List<Categoria> findAll() {
 		try {
 			return (List<Categoria>) repository.findAll();
 		} catch (Exception e) {
@@ -52,11 +52,22 @@ public class CategoriaServiceImpl implements CategoriaService {
 
 
 	@Override
-	public Categoria findByCodigo(int idcategoria) {
+	public Categoria findById(int idcategoria) {
 		try {
 			return repository.findById(idcategoria);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public String remove(int id) {
+		try {
+			repository.deleteById(id);
+			return "Categoria eliminada";
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return null;
 	}

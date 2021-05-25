@@ -42,13 +42,24 @@ public class AlcaldiaServiceImpl implements AlcaldiaService {
 	}
 
 	@Override
-	public List<Alcaldia> listarEmpresas() {
+	public List<Alcaldia> findAll() {
 		try {
 			return (List<Alcaldia>) repository.findAll();
 		} catch (Exception e) {
 			logger.error("Listar alcaldia", e);
 		}
 		return new ArrayList<>();
+	}
+	
+	@Override
+	public String remove(int id) {
+		try {
+			repository.deleteById(id);
+			return "Alcaldia eliminada";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
 	}
 
 }

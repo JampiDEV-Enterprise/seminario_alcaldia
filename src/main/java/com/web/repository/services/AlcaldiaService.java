@@ -4,12 +4,15 @@ import java.util.List;
 
 import com.web.entities.Alcaldia;
 
+
 public interface AlcaldiaService {
 
 	public Alcaldia guardar(Alcaldia entity);
 
 	public Alcaldia findById(Integer id);
 	
-	public List<Alcaldia> listarEmpresas();
+	public List<Alcaldia> findAll();
+	
+	public String remove(int id);
 
 }
