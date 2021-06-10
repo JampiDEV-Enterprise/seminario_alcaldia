@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.entities.Alcaldia;
 import com.web.repository.services.AlcaldiaService;
 
-
+//KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 Alcaldia
 
 @RestController
 @RequestMapping("api/alcaldia")

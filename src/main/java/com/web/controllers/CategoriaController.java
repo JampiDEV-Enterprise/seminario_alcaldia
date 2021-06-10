@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.entities.Categoria;
 import com.web.repository.services.CategoriaService;
 
-
+//KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 CATEGORIA
 
 @RestController
 @RequestMapping("api/Categoria")

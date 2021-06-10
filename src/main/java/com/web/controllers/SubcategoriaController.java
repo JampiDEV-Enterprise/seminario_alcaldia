@@ -3,6 +3,7 @@ package com.web.controllers;
 
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,8 @@ import com.web.entities.SubCategoria;
 
 import com.web.repository.services.CategoriaService;
 import com.web.repository.services.SubcategoriaService;
+
+//KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 SUBCATEGORIA
 
 @RestController
 @RequestMapping("api/Categoria/Subcategoria")

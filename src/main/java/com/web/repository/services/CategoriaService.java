@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.web.entities.Categoria;
 
-
+//KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652
 
 
 public interface CategoriaService {

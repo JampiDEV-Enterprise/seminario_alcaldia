@@ -14,7 +14,7 @@ import com.web.repository.dao.ICategoriaDao;
 import com.web.repository.services.CategoriaService;
 
 
-
+//KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
