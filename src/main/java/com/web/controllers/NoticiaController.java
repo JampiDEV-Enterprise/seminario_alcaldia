@@ -109,8 +109,19 @@ public class NoticiaController {
 	
 	@GetMapping("/{idNoticia}")
 	public ResponseEntity<?> listarPorNoticia(@PathVariable int idNoticia){
-		
-		return null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			Noticia noticia = noticiaService.findById(idNoticia);
+			if(noticia == null) {
+				map.put("mensaje", "no existe la noticia");
+				return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<Noticia>(noticia, HttpStatus.OK);
+		} catch (DataAccessException | InternalError e) {
+			System.out.print(e);
+			map.put("error", e.getCause().getMessage());
+			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@Secured({"ROLE_ADMIN","ROLE_COMUNICADOR"})

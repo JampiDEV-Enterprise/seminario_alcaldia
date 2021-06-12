@@ -20,7 +20,7 @@ public class NoticiaServiceImpl implements NoticiaService {
 		try {
 			return noticiasDao.save(noticia);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -31,7 +31,7 @@ public class NoticiaServiceImpl implements NoticiaService {
 			noticiasDao.deleteById(id);
 			return "Noticia eliminada";
 		} catch (Exception e) {
-		
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -41,7 +41,7 @@ public class NoticiaServiceImpl implements NoticiaService {
 		try {
 			return (List<Noticia>)noticiasDao.findAll();
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -51,7 +51,7 @@ public class NoticiaServiceImpl implements NoticiaService {
 		try {
 			return noticiasDao.findById(id).orElse(null);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
