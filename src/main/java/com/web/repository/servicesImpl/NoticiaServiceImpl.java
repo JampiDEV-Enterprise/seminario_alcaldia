@@ -13,47 +13,49 @@ import com.web.repository.services.NoticiaService;
 public class NoticiaServiceImpl implements NoticiaService {
 
 	@Autowired
-	private INoticiaDao noticiaDao;
+	private INoticiaDao noticiasDao;
+	
+	@Override
+	public Noticia save(Noticia noticia) {
+		try {
+			return noticiasDao.save(noticia);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
+	@Override
+	public String remove(int id) {
+		try {
+			noticiasDao.deleteById(id);
+			return "Noticia eliminada";
+		} catch (Exception e) {
+		
+		}
+		return null;
+	}
 	
 	@Override
 	public List<Noticia> findAll() {
 		try {
-			return (List<Noticia>)noticiaDao.findAll();
+			return (List<Noticia>)noticiasDao.findAll();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return null;
 	}
-
+	
 	@Override
 	public Noticia findById(int id) {
 		try {
-			return noticiaDao.findById(id).orElse(null);
+			return noticiasDao.findById(id).orElse(null);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return null;
 	}
 
-	@Override
-	public String remove(int id) {
-		try {
-			noticiaDao.deleteById(id);
-			return "Noticia eliminada";
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
-
-	@Override
-	public Noticia save(Noticia noticia) {
-		try {
-			return noticiaDao.save(noticia);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
+	
 
 }
