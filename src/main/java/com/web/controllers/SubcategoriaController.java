@@ -94,7 +94,7 @@ public class SubcategoriaController {
 	}
 	
 	@Secured({"ROLE_ADMIN","ROLE_COMUNICADOR"})
-	@PostMapping("/SubCategoria/save/{idCategoria}")
+	@PostMapping("/save/{idCategoria}")
 	public ResponseEntity<?> guardarSubcategoria(@PathVariable int idCategoria,@RequestBody SubCategoria subcategoria){
 		Categoria cat=this.categoriaservice.findById(idCategoria);
 		Map <String,Object>map =new HashMap<>();
