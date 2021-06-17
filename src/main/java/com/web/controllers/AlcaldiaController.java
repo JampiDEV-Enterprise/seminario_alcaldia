@@ -1,6 +1,8 @@
 package com.web.controllers;
 
 
+
+import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -19,13 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.entities.Alcaldia;
 import com.web.repository.services.AlcaldiaService;
+import com.web.repository.services.IUploadFileService;
+
 
 //KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 Alcaldia
 
@@ -35,6 +38,10 @@ public class AlcaldiaController {
 
 	@Autowired
 	private AlcaldiaService service;
+	
+	@Autowired 
+	private IUploadFileService uploadService;
+	
 
 	@GetMapping("")
 	public ResponseEntity<?> listarAlcaldia(){
@@ -54,10 +61,18 @@ public class AlcaldiaController {
 	
 	@Secured({"ROLE_ADMIN","ROLE_COMUNICADOR"})
 	@PostMapping("/save")
-	public ResponseEntity<?> guardar(@ModelAttribute Alcaldia alcaldia, Principal principal){
+	public ResponseEntity<?> guardar(@ModelAttribute Alcaldia alcaldia, Principal principal, @RequestParam("files") MultipartFile files) throws IOException{
 		Map<String, Object> map = new HashMap<String, Object>();
+		
 		try {
+			if(files.isEmpty()) {	
+				
+				map.put("mensaje", "no se envio ninguna imagen");
+				return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
+			}
 			
+			uploadService.copy(files);
+			alcaldia.setLogo(files.getOriginalFilename());
 			service.guardar(alcaldia);
 			
 			
@@ -92,7 +107,7 @@ public class AlcaldiaController {
 	
 	@Secured({"ROLE_ADMIN","ROLE_COMUNICADOR"})
 	@PutMapping("/update/{id}")
-	public ResponseEntity<?> update(@PathVariable int id,@RequestBody Alcaldia alcalida) {
+	public ResponseEntity<?> update(@PathVariable int id,@RequestBody Alcaldia alcalida, @RequestParam("files") MultipartFile files) {
 		Alcaldia alca=this.service.findById(id);
 		
 		if(alca==null) {
@@ -101,18 +116,24 @@ public class AlcaldiaController {
 			map.put("error", "La alcalida en la bd no existe");
 			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.NOT_FOUND);
 		}
-		
+		if(files.isEmpty()) {	
+			Map<String, Object> map=new HashMap<>();
+			map.put("mensaje", "no se envio ninguna imagen");
+			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
+		}
 		
 		try {
+			
 			
 			alca.setAlcalde(alcalida.getAlcalde());
 			alca.setCorreo(alcalida.getCorreo());
 			alca.setDireccion(alcalida.getDireccion());
 			alca.setHorarioAtencion(alcalida.getHorarioAtencion());
 			alca.setIdAlcaldia(alcalida.getIdAlcaldia());
-			alca.setLogo(alcalida.getLogo());
+			alca.setLogo(files.getOriginalFilename());
 			alca.setNombre(alcalida.getNombre());
 			alca.setTelefono(alcalida.getTelefono());
+			uploadService.copy(files);
 			Map<String, Object> map=new HashMap<>();
 			map.put("mensaje", "Alcaldia actualizado corrctamente");
 			map.put("Alcaldia", this.service.guardar(alca));
