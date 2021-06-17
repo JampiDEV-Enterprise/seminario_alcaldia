@@ -85,7 +85,7 @@ public class CategoriaController {
 	}
 	
 	@Secured({"ROLE_ADMIN","ROLE_COMUNICADOR"})
-	@DeleteMapping("/{idAlcaldia}")
+	@DeleteMapping("/{idCategoria}")
 	public ResponseEntity<?> eliminar(@PathVariable int idCategoria){
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
