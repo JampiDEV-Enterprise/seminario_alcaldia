@@ -35,7 +35,7 @@ import com.web.repository.services.SubcategoriaService;
 //KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 SUBCATEGORIA
 
 @RestController
-@RequestMapping("api/Categoria/Subcategoria")
+@RequestMapping("/Categoria/Subcategoria")
 public class SubcategoriaController {
 
 	@Autowired

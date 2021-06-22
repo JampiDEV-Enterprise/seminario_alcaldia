@@ -27,7 +27,7 @@ import com.web.repository.services.CategoriaService;
 //KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 CATEGORIA
 
 @RestController
-@RequestMapping("api/Categoria")
+@RequestMapping("/Categoria")
 public class CategoriaController {
 
 	@Autowired
