@@ -34,7 +34,7 @@ public class UserServiceImpl implements UsuarioService{
 		try {
 			return userDao.findByEmail(email);
 		} catch (Exception e) {
-			logger.error("Busqueda alcaldia por id", e);
+			logger.error("Busqueda usuario por email", e);
 		}
 		return null;
 	}
