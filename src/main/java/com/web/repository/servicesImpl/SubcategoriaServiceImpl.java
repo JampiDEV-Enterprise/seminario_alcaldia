@@ -67,7 +67,7 @@ public class SubcategoriaServiceImpl implements SubcategoriaService {
 		try {
 			return repository.findByCategoria(categoria);
 		} catch (Exception e) {
-			logger.error("Listar productos por categoria", e);
+			logger.error("Listar las subcategorias por categoria", e);
 		}
 		return new ArrayList<>();
 	}
