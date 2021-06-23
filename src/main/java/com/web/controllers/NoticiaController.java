@@ -86,7 +86,6 @@ public class NoticiaController {
 			noticia.setAlcaldia(user.getAlcaldia());
 			noticiaService.save(noticia);
 			
-			System.out.println("ENTRO ACA");
 			List<Foto> fotos = new ArrayList<>();
 			for (int i = 0; i < files.size(); i++) {
 				Foto f = new Foto();
@@ -135,6 +134,9 @@ public class NoticiaController {
 				return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
 			}
 			noticiaService.remove(idNoticia);
+			for(int i = 0; i < noticia.getFotos().size(); i++) {
+				uploadService.delete(noticia.getFotos().get(i).getDescripcion());
+			}
 			map.put("mensaje", "Noticia eliminada");
 			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
 		} catch (DataAccessException | InternalError e) {

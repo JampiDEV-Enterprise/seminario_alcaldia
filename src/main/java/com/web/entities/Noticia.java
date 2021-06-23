@@ -45,7 +45,7 @@ public class Noticia implements Serializable {
 	private SubCategoria subCategoria;
 	
 	//bi-directional many-to-one association to Foto
-	@OneToMany(mappedBy="noticia")
+	@OneToMany(mappedBy="noticia", fetch = FetchType.EAGER)
 	private List<Foto> fotos;
 
 	//bi-directional many-to-one association to Usuario

@@ -6,7 +6,6 @@
 		<class>com.web.entities.Categoria</class>
 		<class>com.web.entities.EnlaceIntere</class>
 		<class>com.web.entities.Foto</class>
-		<class>com.web.entities.Galeria</class>
 		<class>com.web.entities.Noticia</class>
 		<class>com.web.entities.Paso</class>
 		<class>com.web.entities.PreguntaFrecuente</class>
