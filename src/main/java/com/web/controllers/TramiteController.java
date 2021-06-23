@@ -139,10 +139,9 @@ public class TramiteController {
 	}
 
 	@GetMapping("/listar")
-	public List<Tramite> listar(Principal principal){
-		Usuario user=this.userService.findByEmail(principal.getName());
-		return this.tramiteService.listarPerteneciente(user.getAlcaldia().getIdAlcaldia());
-	}
+    public List<Tramite> listar(){
+        return this.tramiteService.listarAll();
+    }
 	
 	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable int id,@RequestBody Tramite tramite) {

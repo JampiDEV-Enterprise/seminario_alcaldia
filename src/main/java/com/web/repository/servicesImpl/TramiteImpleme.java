@@ -65,4 +65,9 @@ public class TramiteImpleme implements TramiteService {
 		return this.paso.findById(id).orElse(null);
 	}
 
+	@Override
+	public List<Tramite> listarAll() {
+		return (List<Tramite>)this.tramite.findAll();
+	}
+
 }
