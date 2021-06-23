@@ -13,6 +13,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -34,6 +35,7 @@ import com.web.repository.services.SubcategoriaService;
 
 //KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 SUBCATEGORIA
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/Categoria/Subcategoria")
 public class SubcategoriaController {

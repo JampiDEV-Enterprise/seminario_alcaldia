@@ -12,6 +12,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,6 +31,7 @@ import com.web.repository.services.IUploadFileService;
 import com.web.repository.services.NoticiaService;
 import com.web.repository.services.UsuarioService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/noticia")
 public class NoticiaController {

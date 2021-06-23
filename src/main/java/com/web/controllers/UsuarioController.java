@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ import com.web.entities.Usuario;
 import com.web.repository.services.AlcaldiaService;
 import com.web.repository.services.UsuarioService;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
