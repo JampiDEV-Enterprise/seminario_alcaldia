@@ -35,7 +35,7 @@ import com.web.repository.services.SubcategoriaService;
 //KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 SUBCATEGORIA
 
 @RestController
-@RequestMapping("api/Categoria/Subcategoria")
+@RequestMapping("/Categoria/Subcategoria")
 public class SubcategoriaController {
 
 	@Autowired
@@ -78,12 +78,12 @@ public class SubcategoriaController {
 	}
 	
 	@GetMapping("/{idSubCategoria}")
-	public ResponseEntity<?> listarPorSubcategoria(@PathVariable int idSubcategoria){
+	public ResponseEntity<?> listarPorCategoria(@PathVariable int idSubCategoria){
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			SubCategoria subcategoria = service.findById(idSubcategoria);
+			SubCategoria subcategoria = service.findById(idSubCategoria);
 			if(subcategoria == null) {
-				map.put("mensaje", "no existe la subcategorias");
+				map.put("mensaje", "no existe la subcategoria");
 				return new ResponseEntity<Map<String, Object>>(map, HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<SubCategoria>(subcategoria, HttpStatus.OK);

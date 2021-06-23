@@ -33,7 +33,7 @@ import com.web.repository.services.IUploadFileService;
 //KEVIN ENRIQUE JIMENEZ SANCHEZ COD:1151652 Alcaldia
 
 @RestController
-@RequestMapping("api/alcaldia")
+@RequestMapping("/alcaldia")
 public class AlcaldiaController {
 
 	@Autowired

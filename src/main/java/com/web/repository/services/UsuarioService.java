@@ -9,4 +9,5 @@ public interface UsuarioService{
 //	@Query("select u from User u where u.email='?1'")
 	public Usuario findByEmail(String email);
 	public List<Usuario> findAll();
+	
 }
